@@ -11,7 +11,7 @@ const seed = require('./seed.js');
 const prodDb = new sqlite3.Database('./database.sqlite');
 const testDb = new sqlite3.Database(process.env.TEST_DATABASE);
 
-describe.only('Employee Table', function () {
+describe('Employee Table', function () {
   it('should exist', function (done) {
     prodDb.get("SELECT name FROM sqlite_master WHERE type='table' AND name='Employee'", (error, table) => {
       if (error || !table) {
@@ -299,7 +299,7 @@ describe('MenuItem Table', function () {
   });
 });
 
-describe('GET /api/employees', function () {
+describe.only('GET /api/employees', function () {
   before(function (done) {
     seed.seedEmployeeDatabase(done);
   });
