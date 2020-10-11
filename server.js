@@ -18,6 +18,8 @@ if (app.get(env) !== 'production') {
     app.use(morgan('tiny'));
 }
 
+const apiRouter = require('./api/api.js');
+app.use('/api', apiRouter);
 
 app.listen(PORT, () => {
     console.log(`App listen on port ${PORT}!`);
