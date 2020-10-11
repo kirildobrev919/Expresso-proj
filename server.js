@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(errorhandler());
 //morgan depending on env
-if (app.get(env) !== 'production') {
+if (app.get('env') !== 'production') {
     app.use(morgan('dev'));
 } else {
     app.use(morgan('tiny'));
