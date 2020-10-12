@@ -299,7 +299,7 @@ describe('MenuItem Table', function () {
   });
 });
 
-describe.only('GET /api/employees', function () {
+describe('GET /api/employees', function () {
   before(function (done) {
     seed.seedEmployeeDatabase(done);
   });
@@ -529,7 +529,7 @@ describe('DELETE /api/employees/:id', function () {
   });
 });
 
-describe('GET /api/employees/:employeeId/timesheets', function () {
+describe.only('GET /api/employees/:employeeId/timesheets', function () {
   before(function (done) {
     seed.seedTimesheetDatabase(done);
   });
