@@ -567,7 +567,7 @@ describe.only('GET /api/employees/:employeeId/timesheets', function () {
   });
 });
 
-describe('POST /api/employees/:employeeId/timesheets', function () {
+describe.only('POST /api/employees/:employeeId/timesheets', function () {
   let newTimesheet;
 
   beforeEach(function (done) {
@@ -639,7 +639,7 @@ describe('POST /api/employees/:employeeId/timesheets', function () {
   });
 });
 
-describe('PUT /api/employees/:employeeId/timesheets/:timesheetId', function () {
+describe.only('PUT /api/employees/:employeeId/timesheets/:timesheetId', function () {
   let updatedTimesheet;
 
   beforeEach(function (done) {
@@ -732,7 +732,7 @@ describe('PUT /api/employees/:employeeId/timesheets/:timesheetId', function () {
   });
 });
 
-describe('DELETE /api/employees/:employeeId/timesheets/:timesheetId', function () {
+describe.only('DELETE /api/employees/:employeeId/timesheets/:timesheetId', function () {
   beforeEach(function (done) {
     seed.seedTimesheetDatabase(done);
   });
