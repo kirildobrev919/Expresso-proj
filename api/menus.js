@@ -79,21 +79,25 @@ menusRouter.put('/:menuId', (req, res, next) => {
     });
 });
 
-menusRouter.delete('/menuId', (req, res, next) => {
-    // const sqlMenuItems = 'SELECT * FROM MenuItems WHERE menu_id = $menuId';
-    // const valuesMenuItems = { $menuId: req.menuId };
-    // db.get(sql, values, (error, menuItems) => {
-    //     if (error) {
-    //         next(error);
-    //     } else if (menuItems.length > 0) {
-    //         return res.sendStatus(400);
-    //     }
-    // });
-    db.run(`DELETE FROM Menu WHERE Menu.id = ${req.params.menuId}`, (error) => {
+menusRouter.delete('/:menuId', (req, res, next) => {
+    const sql = 'SELECT * FROM MenuItem WHERE MenuItem.menu_id = $menuId';
+    const values = { $menuId: req.params.menuId };
+    db.get(sql, values, (error, menuItems) => {
         if (error) {
             next(error);
+        } else if (menuItems) {
+            return res.sendStatus(400);
         } else {
-            res.sendStatus(204);
+            const deleteSql = 'DELETE FROM Menu WHERE Menu.id = $menuId';
+            const deleteValues = { $menuId: req.params.menuId };
+
+            db.run(deleteSql, deleteValues, (error) => {
+                if (error) {
+                    next(error);
+                } else {
+                    res.sendStatus(204);
+                }
+            });
         }
     });
 });
